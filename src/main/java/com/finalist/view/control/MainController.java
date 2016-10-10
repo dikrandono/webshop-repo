@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -14,10 +15,10 @@ public class MainController {
 		
 	}
 	
-	@RequestMapping(value = "/indexpage", method = RequestMethod.GET)
-	public String indexPage(ModelMap model) {
-		
-		return "../../index";
+	@RequestMapping("/indexpage")
+	public ModelAndView indexpage() {
+		String message = "Welcome in the webshop";
+		return new ModelAndView("../../index", "message", message);
 	}
 	
 	@RequestMapping(value = "/bookspage", method = RequestMethod.GET)
@@ -27,10 +28,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/personspage", method = RequestMethod.GET)
-	public String persons(@RequestParam(value = "name", required = false ) String name,
-			Model model) {
-		//model.addAttribute("name", name);
-		return "persons";
+	public ModelAndView persons(@RequestParam(value = "name", required = false ) String name,
+			ModelAndView model) {
+		model.getModel().put("name", name);
+		return model;
 	}
+	
 
 }
