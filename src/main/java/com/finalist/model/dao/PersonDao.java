@@ -15,20 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.finalist.model.entities.Person;
  
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
 public class PersonDao {
 
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	@PersistenceContext() //type = PersistenceContextType.EXTENDED
 	private EntityManager entityManager;
 
 	public PersonDao() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
+ 
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

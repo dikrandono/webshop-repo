@@ -14,18 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.finalist.model.entities.Language;
  
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
 public class LanguageDao {
 
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	@PersistenceContext()//type = PersistenceContextType.EXTENDED
 	private EntityManager entityManager;
 
 	public LanguageDao() {
 
-	}
-
-	public EntityManager getEntityManager() {
-		return entityManager;
 	}
 
 	public void setEntityManager(EntityManager entityManager) {

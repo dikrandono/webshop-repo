@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,7 +25,7 @@ public class Person extends User {
 	@Column(name="birthday")
 	private Date birthday;
 	
-	@OneToMany(cascade=CascadeType.DETACH, mappedBy = "loanedTo")  //, fetch = FetchType.LAZY
+	@OneToMany(mappedBy = "loanedTo")  //, fetch = FetchType.LAZY
 	List<Book> books ;
 	
 

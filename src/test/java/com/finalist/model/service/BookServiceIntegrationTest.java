@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class BookServiceIntegrationTest {
 		assertNotEquals(0,  book2.getId());
 	}
 	
-
+    @Ignore
 	@Test
 	public void itShouldUpdate(){
 		
@@ -68,5 +69,6 @@ public class BookServiceIntegrationTest {
 		assertNotNull(books);
 		assertFalse(books.isEmpty());
 	}
-
+	
+ 
 }

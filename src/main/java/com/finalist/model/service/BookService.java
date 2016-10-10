@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalist.model.dao.BookDao;
 import com.finalist.model.entities.Book;
+import com.finalist.model.entities.Person;
  
 @Service("bookService") 
+@Transactional(propagation = Propagation.REQUIRED)
 public class BookService {
 
 	@Autowired
@@ -48,6 +51,12 @@ public class BookService {
 	public void deleteBook(int id){
 		
 		bookDao.deletBook(id);
+	}
+	
+	@Transactional
+	public List<Book>  findBooksByPersonId(Person person){
+		
+		return bookDao.findBooksByPersonId(person);
 	}
 	
 }

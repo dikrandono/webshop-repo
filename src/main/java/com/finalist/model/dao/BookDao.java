@@ -12,24 +12,21 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalist.model.entities.Book;
+import com.finalist.model.entities.Person;
 
 
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
 public class BookDao {
 
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	@PersistenceContext()  //type = PersistenceContextType.EXTENDED
 	private EntityManager entityManager;
 	
 	
 	public BookDao() {
-		// TODO Auto-generated constructor stub
+		 
 	}
 	
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
+	
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
@@ -69,6 +66,16 @@ public class BookDao {
 			List<Book> books =  query.getResultList();
 			return books;
 	}
+	
+	public List<Book> findBooksByPersonId(Person person) {
+		
+		String SELECT_QUERY = "select b from Book b where b.loanedTo = :loanedTo";
+		Query query = entityManager.createQuery(SELECT_QUERY);
+		query.setParameter("loanedTo", person);
+		
+		List<Book> books =  query.getResultList();
+		return books;
+   }
 
 
 }

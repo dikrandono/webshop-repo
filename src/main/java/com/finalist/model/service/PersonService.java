@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.finalist.model.dao.PersonDao;
 import com.finalist.model.entities.Person;
  
 @Service("personService")
+@Transactional(propagation = Propagation.REQUIRED)
 public class PersonService {
 
 	@Autowired  
@@ -44,5 +46,15 @@ public class PersonService {
 	 public void deletePerson(int id) {  
 		 personDao.deletePerson(id);  
 	 }  
+	 
+	 @Transactional
+	 public Person getPersonWithBooks(Person person){
+		 
+		 Person personWithBooks = personDao.findPersonById(person.getId());
+		 personWithBooks.getBooks().size();
+		 return personWithBooks;
+		 
+		 
+	 }
 
 }

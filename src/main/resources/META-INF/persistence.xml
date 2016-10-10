@@ -11,6 +11,7 @@
 		<class>com.finalist.model.entities.User</class>
 		<class>com.finalist.model.entities.Book</class>
 		<class>com.finalist.model.entities.Language</class>
+		
 	</persistence-unit>
 	
 </persistence>
