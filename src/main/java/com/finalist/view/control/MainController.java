@@ -18,21 +18,17 @@ public class MainController {
 	@RequestMapping("/indexpage")
 	public ModelAndView indexpage() {
 		String message = "Welcome in the webshop";
+		
 		return new ModelAndView("../../index", "message", message);
 	}
 	
-	@RequestMapping(value = "/bookspage", method = RequestMethod.GET)
-	public String booksPage(ModelMap model) {
+	
+	@RequestMapping("/books")
+	public ModelAndView books() {
+		String message = "Books model Data";
 		
-		return "books";
+		return new ModelAndView("books", "message", message);
 	}
-	
-	@RequestMapping(value = "/personspage", method = RequestMethod.GET)
-	public ModelAndView persons(@RequestParam(value = "name", required = false ) String name,
-			ModelAndView model) {
-		model.getModel().put("name", name);
-		return model;
-	}
-	
+
 
 }

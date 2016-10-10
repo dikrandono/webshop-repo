@@ -15,14 +15,14 @@ import com.finalist.model.service.BookService;
 @RestController
 public class BookController {
 
-	@Autowired
-	BookService bookservice ;
+	//@Autowired
+	//BookService bookservice ;
 	
 	public BookController() {
 		 
 	}
-	
-	@RequestMapping(value = "/books", method = RequestMethod.GET, headers = "Accept=application/json")  
+	/*
+	@RequestMapping(value = "/booksData", method = RequestMethod.GET, headers = "Accept=application/json")  
 	 public List<Book> getBooks() {  
 	    System.out.println("find All Books");
 	  List<Book> booksList = bookservice.findAllBooks();  
@@ -53,7 +53,7 @@ public class BookController {
 		 bookservice.deleteBook(id);
 	  
 	 }   
-	
+	*/
 
 
 }

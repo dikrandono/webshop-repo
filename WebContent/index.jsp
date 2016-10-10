@@ -5,9 +5,11 @@
 
 <h1>${message}</h2>
 
-   <a href="/webshop/bookspage">Books</a>
 
-   <a href="/webshop/personspage">Users</a>
+
+   <a href="/webshop/books">Books</a>
+
+   <a href="/webshop/persons">Users</a>
 
 </body>
 

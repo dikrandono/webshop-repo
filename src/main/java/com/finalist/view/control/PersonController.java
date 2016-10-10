@@ -14,26 +14,12 @@ import com.finalist.model.service.PersonService;
 @Controller
 public class PersonController {
 
-	@Autowired
-	PersonService personService;
+	 
 	
 	public PersonController() {
 		 
 	}
 	
-	@RequestMapping(value = "/persons", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<Person> getAllPersons(){
-		
-		List<Person> persons = personService.findAllPersons();
-		
-		return persons;
-	}
-	
-	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public Person getPersonById(@PathVariable int id){
-		
-		return personService.findPerson(id);
-	}
-
+ 
 
 }
