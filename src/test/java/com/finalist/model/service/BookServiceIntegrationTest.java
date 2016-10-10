@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -17,6 +18,7 @@ import com.finalist.model.entities.Book;
  
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestSpringConfig.class)
+@ActiveProfiles("hsql")
 public class BookServiceIntegrationTest {
 
 	
@@ -28,7 +30,7 @@ public class BookServiceIntegrationTest {
 		
 		Book book = new Book("MyBook", "Any Writer");
 			
-		// WHEN
+		// GIVEN
 		book = bookService.addBook(book);
 		System.out.println("itShouldAddBook  " + book.getId() );
 		Book book2 = new Book("MyBook2", "Any Writer2");
