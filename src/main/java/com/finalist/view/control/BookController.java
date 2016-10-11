@@ -84,7 +84,7 @@ public class BookController {
 	 }  
 	
 	
-	 public void refreshBooksList(ModelAndView model){
+	 private void refreshBooksList(ModelAndView model){
 		    List<Book> books = bookService.findAllBooks();
 			model.addObject("books", books);
 			model.addObject("message", "Books View");

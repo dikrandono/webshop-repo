@@ -109,6 +109,7 @@ td, th {
 		                    <td colspan="2">
 		                    <input type="hidden" name="id" value="${book.id}" />
 		                    <input type="submit" value="Save" class="blue-button" />
+		                    <a  href="/webshop/booksview" class="blue-button" > Cancel </a>
 		                    </td>  
 		                </tr>  
 		            </table>  
