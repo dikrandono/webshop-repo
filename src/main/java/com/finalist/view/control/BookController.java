@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.finalist.model.entities.Book;
+import com.finalist.model.entities.Language;
 import com.finalist.model.service.BookService;
+import com.finalist.view.service.BookViewService;
  
 @Controller
 public class BookController {
 
 	@Autowired
 	BookService bookService ;
+	
+	@Autowired
+	BookViewService bookViewService;
 	
 	public BookController() {
 		 
@@ -28,7 +33,7 @@ public class BookController {
 	public ModelAndView books() {
 				
 		 ModelAndView model = new ModelAndView("books");
-		
+		 
 		 refreshBooksList(model);
 		
 		return model;
@@ -37,11 +42,11 @@ public class BookController {
 	 @RequestMapping(value = "/bookform/{id}")  
 	 public ModelAndView getBookById(@PathVariable int id) {  
 		
-		System.out.println("getBookById =" + id);
-		Book book = bookService.findBook(id);
+		Book book = bookService.findBookWithLangs(id);
 		
 		ModelAndView model = new ModelAndView("bookform");
 		model.addObject("book", book);
+		model.addObject("allLangs", bookViewService.LoadAllLanguages());
 		model.addObject("message", "Edit Book");
 		
 	  return model;  
@@ -54,6 +59,7 @@ public class BookController {
 		ModelAndView model = new ModelAndView("bookform");
 		model.addObject("book", new Book("",""));
 		model.addObject("message", "Add Book");
+		model.addObject("allLangs", bookViewService.LoadAllLanguages());
 		
 	  return model;  
 	 }
@@ -71,12 +77,9 @@ public class BookController {
 	 
 	 @RequestMapping(value = "/books", method = RequestMethod.POST)  
 	 public ModelAndView saveBook(@ModelAttribute("book")Book book) { 
+		
+	    bookViewService.saveBook(book);
 		 
-		if(book.getId() == 0){
-			bookService.addBook(book);
-		}else{
-			bookService.updateBook(book);
-		}
 		ModelAndView model = new ModelAndView("books");
 		refreshBooksList(model);
 	  return model;  

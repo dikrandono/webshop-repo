@@ -45,7 +45,7 @@ public class BookServiceIntegrationTest {
 		assertNotEquals(0,  book2.getId());
 	}
 	
-    @Ignore
+   
 	@Test
 	public void itShouldUpdate(){
 		

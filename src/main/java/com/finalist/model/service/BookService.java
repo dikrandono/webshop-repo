@@ -59,4 +59,11 @@ public class BookService {
 		return bookDao.findBooksByPersonId(person);
 	}
 	
+	@Transactional
+	public Book  findBookWithLangs(int id){
+		Book bookWithLangs = bookDao.findBookById(id);
+	    bookWithLangs.getLanguages().size();
+		return bookWithLangs;
+	}
+	
 }

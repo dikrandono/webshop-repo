@@ -13,16 +13,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.finalist.config.TestSpringConfig;
+import com.finalist.model.config.SpringConfig;
 import com.finalist.model.entities.Book;
 import com.finalist.model.entities.Person;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestSpringConfig.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@ActiveProfiles("hsql")
 public class PersonServiceIntegrationTest {
 
 	@Autowired
