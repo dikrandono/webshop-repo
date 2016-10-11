@@ -25,7 +25,7 @@ public class LangController {
 	@RequestMapping("/langsview")
 	public ModelAndView languagesPage() {
 				
-		 ModelAndView model = new ModelAndView("languages");
+		 ModelAndView model = new ModelAndView("/languages/languages");
 		
 		 refreshLangsList(model);
 		
@@ -39,7 +39,7 @@ public class LangController {
 		System.out.println("getBookById =" + id);
 		Language lang = langService.findLangById(id);
 		
-		ModelAndView model = new ModelAndView("languages");
+		ModelAndView model = new ModelAndView("/languages/languages");
 		model.addObject("lang", lang);
 		model.addObject("message", "Edit Language");
 		
@@ -50,7 +50,7 @@ public class LangController {
 	 @RequestMapping(value = "/langformadd")  
 	 public ModelAndView langFormAdd() {  
 				
-		ModelAndView model = new ModelAndView("languages");
+		ModelAndView model = new ModelAndView("/languages/languages");
 		model.addObject("lang", new Language(""));
 		model.addObject("message", "Add Language");
 		
@@ -60,7 +60,7 @@ public class LangController {
 	 @RequestMapping(value = "/deleteLang/{id}")  
 	 public ModelAndView deleteLanguage(@PathVariable int id) {  
 				
-		ModelAndView model = new ModelAndView("languages");
+		ModelAndView model = new ModelAndView("/languages/languages");
 		langService.deleteLanguage(id); 
 		refreshLangsList(model);
 		
@@ -75,7 +75,7 @@ public class LangController {
 		}else{
 			langService.updateLanguage(lang); 
 		}
-		ModelAndView model = new ModelAndView("languages");
+		ModelAndView model = new ModelAndView("/languages/languages");
 		refreshLangsList(model);
 	  return model;  
 	 }  
@@ -83,8 +83,9 @@ public class LangController {
 	
 	 private void refreshLangsList(ModelAndView model){
 		    List<Language> langs = langService.findAllLanguages();
-			model.addObject("lang", langs);
-			model.addObject("message", "Books Languages");
+			model.addObject("langs", langs);
+			model.addObject("message", "Languages");
+			model.addObject("lang", new Language(""));
 			System.out.println("refreshLangsList " + langs.size());
 	 }
 	
