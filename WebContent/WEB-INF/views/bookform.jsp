@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,38 +88,32 @@ td, th {
 </head>
 <body>
 
-
 <h2>${message}</h2>
+ 
+
+		  <form method="post" action="/webshop/books/" >  
+		            <table>  
+		                 
+		                <tr>  
+		                    <th colspan="2">Edit Book</th>  
+		                 </tr>  
+		                <tr>  
+		                    <td>Titel</td>  
+		                    <td><input type="text" name="titel" value="${book.titel}"/></td>  
+		                </tr>  
+		                <tr>  
+		                    <td>Auther</td>  
+		                    <td><input type="text" name="auther" value="${book.auther}" /></td>  
+		                </tr>  
+		                <tr>  
+		                    <td colspan="2">
+		                    <input type="hidden" name="id" value="${book.id}" />
+		                    <input type="submit" value="Save" class="blue-button" />
+		                    </td>  
+		                </tr>  
+		            </table>  
+		   </form>  
 
 
-  <table>
-              <tr>
-                <td style="background-color: silver;" >Titel</td>
-                <td style="background-color: silver;" >Auther</td>
-            </tr>
-        <c:forEach var="book" items="${books}">
-            <tr>
-                <td>${book.titel}</td>
-                <td>${book.auther}</td>
-              
-				<td><a class="blue-button" href="/webshop/bookform/${book.id}" >Edit</a> |
-				 <a class="red-button" href="/webshop/deletebook/${book.id}">Delete</a></td>  
-                
-            </tr>
-        </c:forEach>
-    </table>
- 
- <table>
-              <tr>
-                <td   >
-                 <a class="blue-button" href="/webshop/bookformadd" >Add Book</a>
-                </td>
-                
-            </tr>
-       
-    </table>
- 
-    
- 
 </body>
 </html>
