@@ -71,7 +71,7 @@ public class BookController {
 	 
 	 
 	 @RequestMapping(value = "/books", method = RequestMethod.POST)  
-	 public ModelAndView addBook(@ModelAttribute("book")Book book) { 
+	 public ModelAndView saveBook(@ModelAttribute("book")Book book) { 
 		 
 		if(book.getId() == 0){
 			bookService.addBook(book);
@@ -90,6 +90,9 @@ public class BookController {
 			model.addObject("message", "Books View");
 			System.out.println("refreshBokksList " + books.size());
 	 }
+	 
+	 
+	 
 	
 	/*
 	@RequestMapping(value = "/booksData", method = RequestMethod.GET, headers = "Accept=application/json")  
