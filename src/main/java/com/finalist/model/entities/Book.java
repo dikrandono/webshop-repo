@@ -35,7 +35,7 @@ public class Book {
 	@JoinColumn(foreignKey = @ForeignKey(name = "BOOK_TO_PERSON"))	
 	private Person loanedTo;
 	
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.MERGE})
 	@JoinTable(name="BOOK_LANG", foreignKey = 
 			@ForeignKey(name = "BOOK_LANG_TO_LANG"),
 			inverseForeignKey = @ForeignKey(name = "BOOK_LANG_TO_BOOK"))
