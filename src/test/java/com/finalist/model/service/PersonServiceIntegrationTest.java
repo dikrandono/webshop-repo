@@ -18,7 +18,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.finalist.config.TestSpringConfig;
-import com.finalist.model.config.SpringConfig;
 import com.finalist.model.entities.Book;
 import com.finalist.model.entities.Person;
 

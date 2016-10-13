@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.finalist.model.entities.Book;
-import com.finalist.model.entities.Language;
 import com.finalist.model.service.BookService;
 import com.finalist.view.service.BookViewService;
  
