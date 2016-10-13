@@ -74,5 +74,6 @@ public class CommonSpringConfig {
 
 		return new HibernateJpaDialect();
 	}
-
+	
+	
 }
