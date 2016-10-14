@@ -41,6 +41,7 @@ public class TestSpringJms {
 			//THEN RECIEVE
 		    recievedmessage = springJmsConsumer.receiveMessage();
 			System.out.println("itShouldTestJMS  receives " + recievedmessage );
+			
 		} finally {
 			broker.stop();
 		}
