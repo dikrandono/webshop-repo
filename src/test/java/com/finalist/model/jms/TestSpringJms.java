@@ -1,5 +1,7 @@
 package com.finalist.model.jms;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.net.URI;
 
 import org.apache.activemq.broker.BrokerFactory;
@@ -31,18 +33,19 @@ public class TestSpringJms {
 		
 		BrokerService broker = BrokerFactory.createBroker(new URI("broker:(tcp://localhost:61616)"));
 		broker.start();
-		
+		String recievedmessage ;
 		try {
-			 
+			 //WHEN SEND
 			springJmsProducer.sendMessage("Hi this is my first jms message");
 
-			
-			System.out.println("itShouldTestJMS  receives " + springJmsConsumer.receiveMessage());
+			//THEN RECIEVE
+		    recievedmessage = springJmsConsumer.receiveMessage();
+			System.out.println("itShouldTestJMS  receives " + recievedmessage );
 		} finally {
 			broker.stop();
 		}
 
-		
+		assertNotNull(recievedmessage); 
 	  }
 
 }
