@@ -51,10 +51,10 @@
     
   	<#list personsList as per>
       <tr>
-        <td>${per.firstname}</td>
+        <td>${per.firstname}</td> 
         <td>${per.lastname}</td>
         <td><a class="blue-button" href="/webshop/editperson/${per.id}">Edit</a>
-		| <a class="red-button" href="/webshop/deleteperson/${per.id}">Delete</a></td>
+		  | <a class="red-button" href="/webshop/deleteperson/${per.id}">Delete</a></td>
       </tr>
     </#list>
    
