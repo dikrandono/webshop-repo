@@ -23,7 +23,22 @@ public class MainController {
 		return new ModelAndView("../../index", "message", message);
 	}
 	
-	
+	 @RequestMapping(value = "/index")  
+	 public ModelAndView goToIndex() { 
+				 
+		ModelAndView model = new ModelAndView("index");
+		 System.out.println("Kssssssssss 111111111111111111 index");
+	  return model;  
+	 }  
+	 
+	 @RequestMapping(value = "/login")  
+	 public ModelAndView goToLogin() { 
+				 
+		ModelAndView model = new ModelAndView("login");
+		System.out.println("Kssssssssss 2222222222222222222222 login");
+		 
+	  return model;  
+	 }  
 	
 
 

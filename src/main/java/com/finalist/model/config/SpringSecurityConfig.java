@@ -29,20 +29,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	  @Override
 	  protected void configure(HttpSecurity http) throws Exception {
 		  
-				   /* http.authorizeRequests()
-			                .antMatchers("/login.jsp").permitAll()
-			                .antMatchers("/**").hasRole("USER")
+				    http.authorizeRequests()
+			                .antMatchers("/login.*").permitAll()
+			                .antMatchers("/**").access("hasRole('USER')")
 			                .anyRequest().authenticated()
 			                .and()
-			                .formLogin().loginPage("/login.jsp").permitAll()
-			                .usernameParameter("user").passwordParameter("pass")
-			                .and().csrf().disable(); */
+			                .formLogin().loginPage("/login").permitAll()
+			                .usernameParameter("j_username").passwordParameter("j_password")
+			                .defaultSuccessUrl("/index")
+			                .loginProcessingUrl("/j_spring_security_check")
+			                .and().csrf().disable(); 
 		        
-				    http.authorizeRequests()
+				   /* http.authorizeRequests()
 		                .antMatchers("/login.jsp").anonymous()
+		                .antMatchers("/**").hasRole("USER")
 		                .anyRequest().authenticated()
 		                .and().formLogin()
-		                .loginPage("/login.jsp");
+		                .loginPage("/login.jsp")
+		                .successForwardUrl("/index")
+		                .usernameParameter("user").passwordParameter("pass");*/
 	  }
 
 	

@@ -84,21 +84,7 @@ public class BookController {
 	  return model;  
 	 }  
 	 
-	 @RequestMapping(value = "/index")  
-	 public ModelAndView goToIndex() { 
-				 
-		ModelAndView model = new ModelAndView("../../index");
-		 
-	  return model;  
-	 }  
-	 
-	 @RequestMapping(value = "/login")  
-	 public ModelAndView goToLogin() { 
-				 
-		ModelAndView model = new ModelAndView("../../login");
-		 
-	  return model;  
-	 }  
+	
 	
 	
 	 private void refreshBooksList(ModelAndView model){
