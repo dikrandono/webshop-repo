@@ -35,19 +35,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 			                .anyRequest().authenticated()
 			                .and()
 			                .formLogin().loginPage("/login").permitAll()
-			                .usernameParameter("j_username").passwordParameter("j_password")
-			                .defaultSuccessUrl("/index")
-			                .loginProcessingUrl("/j_spring_security_check")
+			                .usernameParameter("username").passwordParameter("password")
+			                .successForwardUrl("/index")
+			                .failureUrl("/loginerror")
+			                .loginProcessingUrl("/myLoginform")
 			                .and().csrf().disable(); 
 		        
-				   /* http.authorizeRequests()
-		                .antMatchers("/login.jsp").anonymous()
-		                .antMatchers("/**").hasRole("USER")
-		                .anyRequest().authenticated()
-		                .and().formLogin()
-		                .loginPage("/login.jsp")
-		                .successForwardUrl("/index")
-		                .usernameParameter("user").passwordParameter("pass");*/
+				 //j_spring_security_check
 	  }
 
 	

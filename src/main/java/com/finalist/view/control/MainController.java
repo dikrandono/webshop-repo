@@ -27,7 +27,6 @@ public class MainController {
 	 public ModelAndView goToIndex() { 
 				 
 		ModelAndView model = new ModelAndView("index");
-		 System.out.println("Kssssssssss 111111111111111111 index");
 	  return model;  
 	 }  
 	 
@@ -35,8 +34,15 @@ public class MainController {
 	 public ModelAndView goToLogin() { 
 				 
 		ModelAndView model = new ModelAndView("login");
-		System.out.println("Kssssssssss 2222222222222222222222 login");
 		 
+	  return model;  
+	 }  
+	 
+	 @RequestMapping(value = "/loginerror")  
+	 public ModelAndView goToLoginerror() { 
+				 
+		ModelAndView model = new ModelAndView("login");
+		model.addObject("error", "Incorrect user name or password");
 	  return model;  
 	 }  
 	
