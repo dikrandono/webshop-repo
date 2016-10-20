@@ -21,24 +21,29 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 
 	  @Autowired
-	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	        auth.inMemoryAuthentication()
-	                .withUser("user").password("password").roles("USER");
+	                .withUser("user").password("123").roles("USER");
 	    }
 	  
 	  @Override
-	    protected void configure(HttpSecurity http) throws Exception {
-		    http.authorizeRequests()
-		                .antMatchers("/login.jsp").permitAll()
-		                .antMatchers("/**").hasRole("USER")
-		                .anyRequest().authenticated()
-		                .and()
-		                .formLogin().loginPage("/login.jsp").permitAll();
+	  protected void configure(HttpSecurity http) throws Exception {
+		  
+				   /* http.authorizeRequests()
+			                .antMatchers("/login.jsp").permitAll()
+			                .antMatchers("/**").hasRole("USER")
+			                .anyRequest().authenticated()
+			                .and()
+			                .formLogin().loginPage("/login.jsp").permitAll()
+			                .usernameParameter("user").passwordParameter("pass")
+			                .and().csrf().disable(); */
 		        
-		     //http.authorizeRequests().antMatchers("/").hasRole("USER");
-		     //http.authorizeRequests()
-		      //      .anyRequest().hasAuthority("BASIC_PERMISSION");
-		    }
+				    http.authorizeRequests()
+		                .antMatchers("/login.jsp").anonymous()
+		                .anyRequest().authenticated()
+		                .and().formLogin()
+		                .loginPage("/login.jsp");
+	  }
 
 	
 
