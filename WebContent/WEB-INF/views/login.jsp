@@ -45,7 +45,7 @@
 		<h2>Login with Username and Password</h2>
 
 		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
+			<div class="error" > ${error} </div>
 		</c:if>
 		
 		<form name='loginForm'

@@ -30,6 +30,11 @@ public class PersonService {
 	 public Person findPerson(int id) {  
 	  return personDao.findPersonById(id);  
 	 }  
+	 
+	 @Transactional  
+	 public Person findPersonByUsername(String username) {  
+	  return personDao.findPersonByUsername(username);  
+	 }  
 	  
 	 @Transactional  
 	 public Person addPerson(Person person) {  

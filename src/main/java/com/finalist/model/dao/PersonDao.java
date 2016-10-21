@@ -40,6 +40,29 @@ public class PersonDao {
 
 		return person;
 	}
+	
+	public Person findPersonByUsername(String username) {
+
+		String SELECT_QUERY = "from Person as p where p.username = :username";
+		Query query = entityManager.createQuery(SELECT_QUERY);
+		query.setParameter("username", username);
+		Person person = null; 
+		List<Person> psronslist = query.getResultList();
+		
+		System.out.println("findPersonByUsername findPersonByUsername 2222  ===" + psronslist);
+		
+		if(psronslist != null && psronslist.size() > 0){
+			person = psronslist.get(0);
+		}
+		
+		//CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
+		//criteria.createCriteriaUpdate(Person.class);
+		//criteria.like("username", username);
+		
+		
+		return person;
+	}
+
 
 	public Person addPerson(Person person) {
 		entityManager.persist(person);
