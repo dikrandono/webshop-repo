@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
@@ -43,22 +46,27 @@ public class PersonDao {
 	
 	public Person findPersonByUsername(String username) {
 
-		String SELECT_QUERY = "from Person as p where p.username = :username";
+		/*String SELECT_QUERY = "from Person as p where p.username = :username";
 		Query query = entityManager.createQuery(SELECT_QUERY);
 		query.setParameter("username", username);
 		Person person = null; 
 		List<Person> psronslist = query.getResultList();
-		
-		System.out.println("findPersonByUsername findPersonByUsername 2222  ===" + psronslist);
-		
+				
 		if(psronslist != null && psronslist.size() > 0){
 			person = psronslist.get(0);
+		}*/
+		
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Person> criteriaQuery = builder.createQuery(Person.class);
+		Root<Person> personsRoot = criteriaQuery.from(Person.class);
+		criteriaQuery.where(builder.equal(personsRoot.get("username"), username));
+		
+		List<Person> psronslist1 = entityManager.createQuery(criteriaQuery).getResultList();
+		Person person = null; 
+		
+		if(psronslist1 != null && psronslist1.size() > 0){
+			person = psronslist1.get(0);
 		}
-		
-		//CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
-		//criteria.createCriteriaUpdate(Person.class);
-		//criteria.like("username", username);
-		
 		
 		return person;
 	}
