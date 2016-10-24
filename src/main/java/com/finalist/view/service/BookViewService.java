@@ -37,7 +37,7 @@ public class BookViewService {
 				 }
 			   }
 		 }
-		 book.setLanguages(newlanges);
+		book.setLanguages(newlanges);
 		if(book.getId() == 0){
 			bookService.addBook(book);
 		}else{

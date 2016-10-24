@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 
 import com.finalist.model.entities.Person;
 
-@Service("customUserDetailsService")
-public class CustomUserDetailsService implements UserDetailsService {
+@Service("loginUserDetailsService")
+public class LoginUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	PersonService personService;
 
-	public CustomUserDetailsService() {
+	public LoginUserDetailsService() {
 	}
 
 	@Override

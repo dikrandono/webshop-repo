@@ -36,11 +36,11 @@ public class TestSpringJms {
 		String recievedmessage ;
 		try {
 			 //WHEN SEND
-			springJmsProducer.sendMessage("Hi this is my first jms message");
+			springJmsProducer.sendMessage("Hi this is my jms message");
 
 			//THEN RECIEVE
 		    recievedmessage = springJmsConsumer.receiveMessage();
-			System.out.println("itShouldTestJMS  receives " + recievedmessage );
+			System.out.println("itShouldTestRecieveJMS  receives " + recievedmessage );
 			
 		} finally {
 			broker.stop();

@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	@Qualifier("customUserDetailsService")
+	@Qualifier("loginUserDetailsService")
 	UserDetailsService userDetailsService;
 
 	public SpringSecurityConfig() {
@@ -38,8 +38,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers("/login.*").permitAll()
-		.antMatchers("/**").access("hasRole('USER')")
+		        .antMatchers("/login.*").permitAll()
+		        .antMatchers("/**").access("hasRole('USER')")
 				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/login").permitAll()
 				.usernameParameter("username")
@@ -48,7 +48,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.failureUrl("/loginerror")
 				.loginProcessingUrl("/myLoginform")
 				.and().csrf().disable();
-
 		 
 	}
 
