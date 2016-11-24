@@ -17,7 +17,7 @@ public class MainController {
 	public ModelAndView indexpage() {
 		String message = "Welcome in the books webshop";
 
-		return new ModelAndView("/login.html", "message", message);
+		return new ModelAndView("/angular/login.html", "message", message);
 	}
 
 	@RequestMapping(value = "/indexjsp")

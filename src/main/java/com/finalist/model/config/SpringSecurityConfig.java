@@ -44,13 +44,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.sessionManagement()
-           // .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
             //.and().headers().frameOptions().disable()
             .and().authorizeRequests()
 	        .antMatchers("/loginjsp").permitAll()
+	        .antMatchers("/login-ang").permitAll()
 	        .antMatchers("/oauth/token").permitAll()
 	        .antMatchers("/resources/**").permitAll()
-	        .antMatchers("/angularPages/**").permitAll()
 	        .antMatchers("/**").access("hasRole('USER')")
 			.anyRequest().authenticated()
 			

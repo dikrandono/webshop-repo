@@ -5,7 +5,7 @@
   app.config(function($routeProvider ) {
 	  
 	  $routeProvider
-	    .when( "/", { templateUrl : "/webshop/angularPages/NewFile.html"} )
+	    .when( "/", { templateUrl : "/webshop/WEB-INF/views/angular/NewFile.html"} )
 	    .when( "/index", { templateUrl : "/webshop/WEB-INF/views/index.jsp"} )
 	    .when( "/home", { templateUrl : ""} );
 	  });

@@ -73,6 +73,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/WEB-INF/views/angular/**").addResourceLocations("/WEB-INF/views/angular/");
 	}
 
 	@Bean
