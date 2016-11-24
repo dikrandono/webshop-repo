@@ -13,36 +13,28 @@ public class MainController {
 
 	}
 
-	@RequestMapping("/indexpage")
+	@RequestMapping("/login-ang")
 	public ModelAndView indexpage() {
-		String message = "Welcome in the webshop";
+		String message = "Welcome in the books webshop";
 
-		return new ModelAndView("/index", "message", message);
+		return new ModelAndView("/login.html", "message", message);
 	}
 
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/indexjsp")
 	public ModelAndView goToIndex() {
 
-		ModelAndView model = new ModelAndView("index");
+		ModelAndView model = new ModelAndView("index.jsp");
 		String message = "Welcome in the webshop";
 		model.addObject("message", message);
 
 		return model;
 	}
+	
 
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/loginjsp")
 	public ModelAndView goToLogin() {
+		ModelAndView model = new ModelAndView("login.jsp");
 
-		ModelAndView model = new ModelAndView("login");
-
-		return model;
-	}
-
-	@RequestMapping(value = "/loginerror")
-	public ModelAndView goToLoginerror() {
-
-		ModelAndView model = new ModelAndView("login");
-		model.addObject("error", "Incorrect user name or password");
 		return model;
 	}
 

@@ -1,5 +1,7 @@
 package com.finalist.model.config;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -14,6 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -59,11 +62,13 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public InternalResourceViewResolver jspViewResolver() {
-		InternalResourceViewResolver bean = new InternalResourceViewResolver();
-		bean.setPrefix("/WEB-INF/views/");
-		bean.setSuffix(".jsp");
+			InternalResourceViewResolver bean = new InternalResourceViewResolver();
+			bean.setPrefix("/WEB-INF/views/");
+			bean.setSuffix("");
 		return bean;
 	}
+	 
+
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -23,6 +23,7 @@ import com.finalist.model.service.LoginUserDetailsService;
 @ComponentScan(basePackages = "com.finalist", excludeFilters = @ComponentScan.Filter(value = SpringConfig.class, type = FilterType.ASSIGNABLE_TYPE))
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter{   
  
+	
     @Autowired
     @Qualifier("myAuthenticationManagerBean")
     private AuthenticationManager authenticationManager;

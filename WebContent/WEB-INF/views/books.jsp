@@ -29,22 +29,22 @@
 				<td>${book.titel}</td>
 				<td>${book.auther}</td>
 
-				<td><a class="blue-button" href="/webshop/bookform/${book.id}">Edit</a>
-					| <a class="red-button" href="/webshop/deletebook/${book.id}">Delete</a></td>
+				<td>  
+				      <a class="blue-button" href="/webshop/bookform/${book.id}">Edit</a>
+					| <a class="red-button" href="/webshop/deletebook/${book.id}">Delete</a>
+				</td>
 
 			</tr>
 		</c:forEach>
 	</table>
 
 	<table>
+	
 		<tr>
-			<td><a class="blue-button" href="/webshop/bookformadd">Add
-					Book</a></td>
-
+			<td><a class="blue-button" href="/webshop/bookformadd">Add Book</a></td>
 		</tr>
 
 	</table>
-
 
 
 </body>

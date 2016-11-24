@@ -15,8 +15,9 @@ import com.finalist.model.config.SpringConfig;
 @Configuration
 @EnableResourceServer
 @ComponentScan(basePackages = "com.finalist", excludeFilters = @ComponentScan.Filter(value = SpringConfig.class, type = FilterType.ASSIGNABLE_TYPE))
-public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter  {
 
+	
 	private static final String RESOURCE_ID = "my_rest_api";
 	
 	
@@ -35,10 +36,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http.sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().anonymous().disable()
-        .requestMatchers().antMatchers("/user/**")
+        .requestMatchers().antMatchers("/data/**")
         .and().authorizeRequests()
-        .antMatchers("/user/**").access("hasRole('USER')")
+        .antMatchers("/data/**").access("hasRole('USER')")
         .antMatchers("/oauth/token").permitAll()
+        //.antMatchers("/**").permitAll()
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
     

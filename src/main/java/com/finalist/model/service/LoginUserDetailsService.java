@@ -19,46 +19,44 @@ import org.springframework.stereotype.Service;
 import com.finalist.model.entities.Person;
 
 @Service("loginUserDetailsService")
-public class LoginUserDetailsService implements UserDetailsService,ClientDetailsService {
+public class LoginUserDetailsService implements UserDetailsService, ClientDetailsService {
 
 	@Autowired
 	PersonService personService;
-	
-	 private  ClientDetailsService clients; 
-	 	  
-	 private  ClientDetailsUserDetailsService clientDetailsWrapper; 
-	
- 
-	public LoginUserDetailsService( ) throws Exception { 
-			  super(); 
-			  clients = new InMemoryClientDetailsServiceBuilder() 
-					    
-					     .withClient("my-client").
-					     authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit") 
-					     .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT","ROLE_USER") 
-					     .scopes("read", "write", "trust").secret("secret")
-					     .accessTokenValiditySeconds(120) //Access token is only valid for 2 minutes.
-				         .refreshTokenValiditySeconds(600)
-					     .resourceIds("MyResourceId") 
-					     .and().build(); 
-				 
-			  clientDetailsWrapper = new ClientDetailsUserDetailsService(clients); 
-			 } 
-			 
 
-	@Override 
-	 public ClientDetails loadClientByClientId(String clientId)throws ClientRegistrationException { 
-		
+	private ClientDetailsService clients;
+
+	private ClientDetailsUserDetailsService clientDetailsWrapper;
+
+	public LoginUserDetailsService() throws Exception {
+		super();
+				
+		clients = new InMemoryClientDetailsServiceBuilder()
+				
+				.withClient("my-client")
+				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "ROLE_USER")
+				.scopes("read", "write", "trust")
+				.secret("secret").accessTokenValiditySeconds(480) // Access token is only valid for 2
+																	// minutes.
+				.refreshTokenValiditySeconds(600).resourceIds("MyResourceId").and().build();
+
+		clientDetailsWrapper = new ClientDetailsUserDetailsService(clients);
+	}
+
+	@Override
+	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
+
 		System.out.println("loadClientByClientId loadClientByClientId  =====  " + clientId);
-		
-		return clients.loadClientByClientId(clientId); 
-	 } 
-	
+
+		return clients.loadClientByClientId(clientId);
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("loadUserByUsername loadUserByUsername  =====  " + username);
 		Person person = personService.findPersonByUsername(username);
-		
+
 		if (person == null || person.getId() == 0) {
 			System.out.println("User not found");
 			throw new UsernameNotFoundException("Username not found");
@@ -68,6 +66,7 @@ public class LoginUserDetailsService implements UserDetailsService,ClientDetails
 				true, true, true, getGrantedPermissions());
 
 	}
+	
 
 	private List<GrantedAuthority> getGrantedPermissions() {
 

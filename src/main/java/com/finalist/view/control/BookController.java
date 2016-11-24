@@ -31,7 +31,7 @@ public class BookController {
 	@RequestMapping("/booksview")
 	public ModelAndView books() {
 				
-		 ModelAndView model = new ModelAndView("books");
+		 ModelAndView model = new ModelAndView("books.jsp");
 		 
 		 refreshBooksList(model);
 		
@@ -43,7 +43,7 @@ public class BookController {
 		
 		Book book = bookService.findBookWithLangs(id);
 		
-		ModelAndView model = new ModelAndView("bookform");
+		ModelAndView model = new ModelAndView("bookform.jsp");
 		model.addObject("book", book);
 		model.addObject("allLangs", bookViewService.LoadAllLanguages());
 		model.addObject("message", "Edit Book");
@@ -55,7 +55,7 @@ public class BookController {
 	 @RequestMapping(value = "/bookformadd")  
 	 public ModelAndView bookFormAdd() {  
 				
-		ModelAndView model = new ModelAndView("bookform");
+		ModelAndView model = new ModelAndView("bookform.jsp");
 		model.addObject("book", new Book("",""));
 		model.addObject("message", "Add Book");
 		model.addObject("allLangs", bookViewService.LoadAllLanguages());
@@ -66,7 +66,7 @@ public class BookController {
 	 @RequestMapping(value = "/deletebook/{id}")  
 	 public ModelAndView deleteBook(@PathVariable int id) {  
 				
-		ModelAndView model = new ModelAndView("books");
+		ModelAndView model = new ModelAndView("books.jsp");
 		bookService.deleteBook(id);
 		refreshBooksList(model);
 		
@@ -79,7 +79,7 @@ public class BookController {
 		
 	    bookViewService.saveBook(book);
 		 
-		ModelAndView model = new ModelAndView("books");
+		ModelAndView model = new ModelAndView("books.jsp");
 		refreshBooksList(model);
 	  return model;  
 	 }  

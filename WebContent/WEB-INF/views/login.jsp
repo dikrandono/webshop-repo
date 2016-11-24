@@ -6,41 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login Page</title>
-
-<script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-
-<script  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js">
+ 
+	
 </script>
-
-<script src="/webshop/resources/js/loginNg.js" > </script>
 
 <link href="<c:url value="/resources/css/mystyle.css" />" rel="stylesheet">
 
 </head>
-<body ng-app="myApp" ng-controller="mainCtrl">
+<!--body ng-app="myApp" ng-controller="mainCtrl">
 
-	<div id="login-box">
+	<div id="login-box"  >
 
 		<h2>Login with Username and Password</h2>
-		
-	     	<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='username' value='' ng-model="data.username" ></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' ng-model="data.password" /></td>
-				</tr>
-				<tr>
-					<td colspan='2'> <a href="#" ng-click="login()">Login</a> </td>
-				</tr>
-			</table>
-				
-			 
-		
-		
-		<!--  
+
+		<table>
+			<tr>
+				<td>User:</td>
+				<td><input type='text' name='username' value='' ng-model="data.username"></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type='password' name='password' ng-model="data.password" /></td>
+			</tr>
+			<tr>
+				<td colspan='2'><a href="#" ng-click="login()">Login</a></td>
+			</tr>
+		</table -->
+
+
+	 <body >
+	 <div id="login-box"  >
 		<c:if test="${not empty error}">
 			<div class="error" > ${error} </div>
 		</c:if>
@@ -64,9 +59,9 @@
 				<input type="hidden"
                        name="${_csrf.parameterName}" value="${_csrf.token}" />
 			 
-		</form > -->
-		
-		
+		</form >  
+
+
 	</div>
 
 </body>

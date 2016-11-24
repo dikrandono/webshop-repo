@@ -11,8 +11,7 @@
 	var app = angular.module("BookManagement", []);
 
 	
-	app.controller("BookController",
-					function($scope, $http) {
+	app.controller("BookController", function($scope, $http) {
 
 						$scope.books = [];
 						$scope.bookForm = {
