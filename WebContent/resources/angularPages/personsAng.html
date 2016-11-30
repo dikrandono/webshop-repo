@@ -1,0 +1,55 @@
+         
+        <div id="persons-box"  ng-controller="PersonsCtrl">
+         
+          <h1>  
+           Welcome in Angular Book Store! Persons 
+         </h1>   
+
+		  <form ng-submit="submitPerson()">  
+		            <table>  
+		                 
+		                    <tr>  
+		                        <th colspan="2">Add/Edit Person</th>  
+		                    </tr>  
+			                <tr>  
+			                    <td>Firstname</td>  
+			                    <td><input type="text" ng-model="personForm.firstname" /></td>  
+			                </tr>  
+		                    <tr>  
+		                        <td>Lastname</td>  
+		                        <td><input type="text" ng-model="personForm.lastname"  /></td>  
+		                    </tr>  
+		                    <tr>  
+		                        <td>Username</td>  
+		                        <td><input type="text" ng-model="personForm.username"  /></td>  
+		                    </tr>  
+		                    <tr>  
+		                        <td>Password</td>  
+		                        <td><input type="text" ng-model="personForm.password"  /></td>  
+		                    </tr>  
+			                <tr>  
+			                    <td colspan="2"><input type="submit" value="Submit" class="blue-button" /></td>  
+			                </tr>  
+		            </table>  
+		   </form>  
+
+      <table>  
+            <tr>  
+                
+                <th>Firstname</th>  
+                <th>Lastname</th>  
+                <th>Operations</th>  
+                 
+            </tr>  
+   
+            <tr ng-repeat="person in personsList track by $index">  
+                 
+            <td> {{ person.firstname }}</td>  
+            <td> {{ person.lastname }}</td>    
+                  
+            <td><a ng-click="editPerson(person)" class="blue-button">Edit</a> | <a ng-click="deletePerson(person)" class="red-button">Delete</a></td>  
+            </tr>  
+   
+        </table>  
+        
+        </div>

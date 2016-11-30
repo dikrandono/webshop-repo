@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
  
 @Entity  
 @Table(name="PERSON")
@@ -23,6 +25,7 @@ public class Person extends User {
 	private Date birthday;
 	
 	@OneToMany(mappedBy = "loanedTo")  //, fetch = FetchType.LAZY
+	@JsonIgnore
 	List<Book> books ;
 	
 

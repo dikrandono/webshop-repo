@@ -28,17 +28,17 @@ public class LoginUserDetailsService implements UserDetailsService, ClientDetail
 
 	private ClientDetailsUserDetailsService clientDetailsWrapper;
 
+	
 	public LoginUserDetailsService() throws Exception {
+		
 		super();
-				
 		clients = new InMemoryClientDetailsServiceBuilder()
 				
 				.withClient("my-client")
 				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
 				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "ROLE_USER")
 				.scopes("read", "write", "trust")
-				.secret("secret").accessTokenValiditySeconds(480) // Access token is only valid for 2
-																	// minutes.
+				.secret("secret").accessTokenValiditySeconds(480).resourceIds("MyResourceId") 
 				.refreshTokenValiditySeconds(600).resourceIds("MyResourceId").and().build();
 
 		clientDetailsWrapper = new ClientDetailsUserDetailsService(clients);
@@ -47,7 +47,7 @@ public class LoginUserDetailsService implements UserDetailsService, ClientDetail
 	@Override
 	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
 
-		System.out.println("loadClientByClientId loadClientByClientId  =====  " + clientId);
+		//System.out.println("loadClientByClientId loadClientByClientId  =====  " + clientId);
 
 		return clients.loadClientByClientId(clientId);
 	}

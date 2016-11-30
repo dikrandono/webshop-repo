@@ -1,6 +1,5 @@
 package com.finalist.model.config;
 
-import java.util.Properties;
 
 import javax.sql.DataSource;
 
@@ -16,7 +15,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
@@ -32,13 +30,13 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public DataSource dataSource() {
 
-		System.out.println("MYSQL dataSource dataSource dataSource dataSource MYSQL");
-
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/BookStore");
-		dataSource.setUsername("diko");
-		dataSource.setPassword("123");
+			System.out.println("MYSQL dataSource dataSource dataSource dataSource MYSQL");
+	
+			DriverManagerDataSource dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+			dataSource.setUrl("jdbc:mysql://localhost:3306/BookStore"); 
+			dataSource.setUsername("diko");
+			dataSource.setPassword("123");
 
 		return dataSource;
 	}
@@ -46,18 +44,18 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean 
 	public FreeMarkerViewResolver freemarkerViewResolver() { 
-	    FreeMarkerViewResolver resolver = new FreeMarkerViewResolver(); 
-	    resolver.setCache(true); 
-	    resolver.setPrefix(""); 
-	    resolver.setSuffix(".ftl"); 
-	    return resolver; 
+		    FreeMarkerViewResolver resolver = new FreeMarkerViewResolver(); 
+		    resolver.setCache(true); 
+		    resolver.setPrefix(""); 
+		    resolver.setSuffix(".ftl"); 
+		return resolver; 
 	}
 	
 	@Bean 
 	public FreeMarkerConfigurer freemarkerConfig() { 
-	    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
-	    freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/ftl/");
-	    return freeMarkerConfigurer; 
+		    FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
+		    freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/ftl/");
+	   return freeMarkerConfigurer; 
 	}
 
 	@Bean
@@ -69,19 +67,19 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 	}
 	 
 
-
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/WEB-INF/views/angular/**").addResourceLocations("/WEB-INF/views/angular/");
+			registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+			registry.addResourceHandler("/WEB-INF/views/angular/**").addResourceLocations("/WEB-INF/views/angular/");
 	}
 
+	
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 
-		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-		hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
-		hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+			HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+			hibernateJpaVendorAdapter.setDatabase(Database.MYSQL);
+			hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 
 		return hibernateJpaVendorAdapter;
 	}

@@ -18,7 +18,7 @@ import com.finalist.model.config.SpringConfig;
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter  {
 
 	
-	private static final String RESOURCE_ID = "my_rest_api";
+	private static final String RESOURCE_ID = "MyResourceId";
 	
 	
 	public ResourceServerConfiguration() {
@@ -34,7 +34,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .sessionCreationPolicy(SessionCreationPolicy.NEVER)
         .and().anonymous().disable()
         .requestMatchers().antMatchers("/data/**")
         .and().authorizeRequests()
