@@ -30,19 +30,17 @@ public class LoginUserDetailsService implements UserDetailsService, ClientDetail
 
 	
 	public LoginUserDetailsService() throws Exception {
-		
 		super();
-		clients = new InMemoryClientDetailsServiceBuilder()
-				
-				.withClient("my-client")
-				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
-				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "ROLE_USER")
-				.scopes("read", "write", "trust")
-				.secret("secret").accessTokenValiditySeconds(480).resourceIds("MyResourceId") 
-				.refreshTokenValiditySeconds(600).resourceIds("MyResourceId").and().build();
+		clients = new  InMemoryClientDetailsServiceBuilder().withClient("my-client")
+				      .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+				      .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "ROLE_USER")
+				      .scopes("read", "write", "trust")
+				      .secret("secret").accessTokenValiditySeconds(480).resourceIds("MyResourceId") 
+				      .refreshTokenValiditySeconds(600).resourceIds("MyResourceId").and().build();
 
 		clientDetailsWrapper = new ClientDetailsUserDetailsService(clients);
 	}
+	
 
 	@Override
 	public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
